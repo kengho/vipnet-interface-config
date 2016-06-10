@@ -1,8 +1,8 @@
-host: 10.46.59.186
+host: 192.168.0.2
 port: 8080
-ticket_url_template: http://10.46.59.186:8080/WorkOrder.do?woMode=viewWO&woID=#{id}
-username: user
-password: P@ssw0rd
-last_tickets_number: 10
+ticket_url_template: http://192.168.0.2:8080/ticketId=#{id}
+username: Username1
+password: Password1
+last_tickets_number: 100
 api_url: localhost:3000/api/v1/tickets
-token: 2
+token: TOKEN==
