@@ -1,0 +1,30 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    chronic (0.10.2)
+    me_sd (0.2)
+      nokogiri (~> 1)
+    mini_portile2 (2.1.0)
+    nokogiri (1.6.8)
+      mini_portile2 (~> 2.1.0)
+      pkg-config (~> 1.1.7)
+    pkg-config (1.1.7)
+    ruby_expect (1.7.4)
+    vipnet_getter (0.1)
+      ruby_expect (~> 1)
+    vipnet_parser (0.3.1)
+    whenever (0.9.7)
+      chronic (>= 0.6.3)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  me_sd
+  nokogiri
+  vipnet_getter
+  vipnet_parser
+  whenever
+
+BUNDLED WITH
+   1.11.2

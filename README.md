@@ -11,7 +11,6 @@ Installing to current user's home directory (`~/config/`) (`/home/user/config/` 
 ```
 sudo apt-get update
 sudo apt-get install ruby-dev libxslt-dev libxml2-dev zlib1g-dev git
-sudo gem install whenever me_sd vipnet_parser vipnet_getter
 
 cd ~
 mkdir config
@@ -19,6 +18,7 @@ cd config
 git init
 git remote add config https://github.com/kengho/vipnet_interface_config.git
 git pull config master
+bundle install
 
 cp tickets_example.yml tickets.yml
 nano tickets.yml
