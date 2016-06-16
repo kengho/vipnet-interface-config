@@ -24,6 +24,8 @@ nano tickets.yml
 # fill out like in example
 nano getter.yml
 # same here
+nano schedule.rb
+# setup something if you want
 
 cd ~
 wheneverize .
