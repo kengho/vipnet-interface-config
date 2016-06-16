@@ -5,4 +5,4 @@ username: Username1
 password: Password1
 last_tickets_number: 100
 api_url: localhost:3000/api/v1/tickets
-token: TOKEN==
+api_token: TOKEN==

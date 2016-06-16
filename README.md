@@ -20,8 +20,10 @@ git init
 git remote add config https://github.com/kengho/vipnet_interface_config.git
 git pull config master
 
+cp tickets_example.yml tickets.yml
 nano tickets.yml
-# fill out like in example
+# fill this out
+cp getter_example.yml.yml getter.yml
 nano getter.yml
 # same here
 nano schedule.rb
