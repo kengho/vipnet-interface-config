@@ -1,8 +1,6 @@
-# send iplirconf
-every 1.day, :at => '4am' do
-  wd = "~/hw_tools"
-  ruby = `which ruby`
-  command "cd #{wd}; #{ruby} ./send_all.rb >/dev/null 2>&1"
+every 1.day, :at => '2am' do
+  wd = "~/config"
+  command "cd #{wd}; rake send_all_iplirconfs >/dev/null 2>&1"
 end
 
 every 1.day, :at => "6am" do

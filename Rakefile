@@ -1,9 +1,11 @@
 require "me_sd"
 require "vipnet_parser"
+require "vipnet_getter"
 require "yaml"
 require "net/http"
+require "rest_client"
 
-EXCEPTIONS = [Timeout::Error, Errno::EINVAL, Errno::ECONNRESET, Errno::EHOSTUNREACH, EOFError,
+NET_EXCEPTIONS = [Timeout::Error, Errno::EINVAL, Errno::ECONNRESET, Errno::EHOSTUNREACH, EOFError,
   Net::HTTPBadResponse, Net::HTTPHeaderSyntaxError, Net::ProtocolError]
 
 task :send_last_n_tickets do
@@ -28,6 +30,28 @@ task :send_all_tickets do
   end
 end
 
+task :send_all_iplirconfs do
+  data = YAML.load_file("getter.yml")
+  data["coordinators"].each do |coordinator|
+    iplirconf_file = VipnetGetter::iplirconf({
+      hostname: coordinator["hostname"],
+      password: coordinator["password"],
+    })
+    RestClient.post(
+      data["iplirconfs_api_url"],
+      # payload
+      {
+        vipnet_id: coordinator["vipnet_id"],
+        content: File.new(iplirconf_file, "rb"),
+      },
+      # headers
+      {
+        Authorization: "Token token=#{data['iplirconfs_api_token']}",
+      },
+    )
+  end
+end
+
 def prepare_sd(settings)
   sd = MESD.new({
     host: settings["host"],
@@ -47,11 +71,11 @@ def send_tickets(args)
       begin
         Net::HTTP.start(uri.host, uri.port) do |http|
           data = { ticket: { vipnet_id: vipnet_id, id: ticket.id, url_template: args[:settings]["ticket_url_template"] }}
-          headers = { "Authorization" => "Token token=#{args[:settings]['token']}" }
+          headers = { "Authorization" => "Token token=#{args[:settings]['api_token']}" }
           request = http.post(uri, URI.encode_www_form(data), headers)
           print request.response.body
         end
-      rescue *EXCEPTIONS => e
+      rescue *NET_EXCEPTIONS => e
       end
     end
   end

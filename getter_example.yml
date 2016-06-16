@@ -1,0 +1,11 @@
+iplirconfs_api_token: t0ken
+iplirconfs_api_path: 192.0.2.1:8080/api/v1/iplirconfs
+coordinators:
+  -
+    vipnet_id: "0x1a0e0001"
+    ip: 192.0.2.2
+    password: passw0rd
+  -
+    vipnet_id: "0x1a0e0002"
+    ip: 192.0.2.3
+    password: passw1rd
