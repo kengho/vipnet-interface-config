@@ -23,7 +23,7 @@ git pull config master
 cp tickets_example.yml tickets.yml
 nano tickets.yml
 # fill this out
-cp getter_example.yml.yml getter.yml
+cp getter_example.yml getter.yml
 nano getter.yml
 # same here
 nano schedule.rb
