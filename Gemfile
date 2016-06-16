@@ -4,4 +4,4 @@ gem "whenever"
 gem "me_sd"
 gem "vipnet_parser"
 gem "vipnet_getter"
-
+gem "rest_client"
