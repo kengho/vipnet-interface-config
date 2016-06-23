@@ -68,7 +68,7 @@ def send_tickets(args)
     vipnet_ids = VipnetParser::id({
       string: ticket_data.name + ticket_data.description + ticket_data.resolution,
       threshold: "0xffff".to_i(16),
-    )
+    })
     vipnet_ids.each do |vipnet_id|
       uri = URI("http://#{args[:settings]['api_url']}")
       begin
